@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<levelData>
+	<meta>
+		<gameName> TD </gameName>
+		<fileVersion>1.0</fileVersion>
+		<author>Nikita Katsak</author>
+	</meta>
+	<level>
+		<gridValueX>
+			<text>16</text>
+		</gridValueX>
+		<gridValueY>
+			<text>10</text>
+		</gridValueY>
+		<grid>
+			<text>
+			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			SP,LR,LR,LD,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,TD,EM,DR,LR,LD,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,TD,EM,DT,EM,DT,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,TR,LR,LT,EM,TR,LR,LR,LR,LR,LR,LR,LR,LR;
+			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			</text>
+		</grid>
+		<creeps>
+		</creeps>
+	</level>
+</levelData>
