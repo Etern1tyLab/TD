@@ -6,28 +6,37 @@
 		<author>Nikita Katsak</author>
 	</meta>
 	<level>
-		<gridValueX>
-			<text>16</text>
-		</gridValueX>
-		<gridValueY>
-			<text>10</text>
-		</gridValueY>
+		<gridValueX>16</gridValueX>
+		<gridValueY>10</gridValueY>
+		<spawnPointCount>2</spawnPointCount>
 		<grid>
-			<text>
 			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
-			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
-			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
-			SP,LR,LR,LD,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,SD,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,TD,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
+			SR,LR,LR,LD,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
 			EM,EM,EM,TD,EM,DR,LR,LD,EM,EM,EM,EM,EM,EM,EM,EM;
-			EM,EM,EM,TD,EM,DT,EM,DT,EM,EM,EM,EM,EM,EM,EM,EM;
+			EM,EM,EM,TD,EM,DT,EM,TD,EM,EM,EM,EM,EM,EM,EM,EM;
 			EM,EM,EM,TR,LR,LT,EM,TR,LR,LR,LR,LR,LR,LR,LR,LR;
 			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
 			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
 			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
 			EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM,EM;
-			</text>
 		</grid>
-		<creeps>
-		</creeps>
+		
+		<wavesCount>1</wavesCount>
+		<waves>
+			<wave1>
+				<creepTypeCount>1</creepTypeCount>
+				<creeps>
+					<creep1>
+						<creepName>UnitPrefab</creepName>
+						<creepCount>10</creepCount>
+						<creepHP>100</creepHP>
+						<creepSpeed>1</creepSpeed>
+						<creepCost>10</creepCost>
+					</creep1>	
+				</creeps>
+			</wave1>
+		</waves>
 	</level>
 </levelData>

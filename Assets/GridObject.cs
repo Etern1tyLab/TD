@@ -1,10 +1,28 @@
-﻿using UnityEngine;
+﻿//
+//  Author:
+//    Nikita Katsak dev.racoonlab@gmail.com
+//
+//  Copyright (c) 2014, Dev.RacoonLab
+//
+//  All rights reserved.
+//
+
+
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
 
 public class GridObject
 {
+	public enum SpawnpointDirection
+	{
+		ToRight,
+		ToLeft,
+		ToDown,
+		ToTop
+	};
 	public enum WaypointDirection
 	{
 		//Enums for Right
@@ -53,14 +71,27 @@ public class GridObject
 	/// <summary>
 	/// The direction for waypoint.
 	/// </summary>
-	private WaypointDirection direction;
-	public WaypointDirection Direction {get {return direction;}}
+	private WaypointDirection wayPointDirection;
+	public WaypointDirection WayPointDirection {get {return wayPointDirection;}}
+
+	/// <summary>
+	/// The direction for waypoint.
+	/// </summary>
+	private SpawnpointDirection spawnPointDirection;
+	public SpawnpointDirection SpawnPointDirection {get {return spawnPointDirection;}}
 
 	/// <summary>
 	/// The grid game object.
 	/// </summary>
 	private GameObject gridGameObject;
-	public GameObject GridGameObject {get {return gridGameObject;}}
+	public GameObject GridGameObject {
+		get {
+			return gridGameObject;
+		}
+		set {
+			gridGameObject = value;
+		}
+	}
 
 	/// <summary>
 	/// The grid ID.
@@ -70,15 +101,15 @@ public class GridObject
 
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="GridObject"/> class.
+	/// Initializes a new instance of the <see cref="GridObject"/> class with EMPTYGRID.
 	/// </summary>
 	/// <param name="_coordinateX">_coordinate x.</param>
 	/// <param name="_coordinateY">_coordinate y.</param>
 	/// <param name="_type">_type.</param>
 	/// <param name="_prefabLocation">_prefab location.</param>
-	public GridObject(int _coordinateX, int _coordinateY, GridType _type, string _prefabLocation)
+	public GridObject(string _id, int _coordinateX, int _coordinateY, GridType _type, string _prefabLocation)
 	{
-		gridID = _coordinateX.ToString() + _coordinateY.ToString();
+		gridID = _id;
 		coordinateX = _coordinateX;
 		coordinateY = _coordinateY;
 		type = _type;
@@ -89,20 +120,21 @@ public class GridObject
 	}
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="GridObject"/> class.
+	/// Initializes a new instance of the <see cref="GridObject"/> class with WAYPOINT.
 	/// </summary>
 	/// <param name="_coordinateX">_coordinate x.</param>
 	/// <param name="_coordinateY">_coordinate y.</param>
 	/// <param name="_type">_type.</param>
 	/// <param name="_direction">_direction.</param>
 	/// <param name="_gridGameObject">_grid game object.</param>
-	public GridObject(int _coordinateX, int _coordinateY, GridType _type, WaypointDirection _direction, string _prefabLocation)
+	public GridObject(string _id, int _coordinateX, int _coordinateY, GridType _type, WaypointDirection _direction, string _prefabLocation)
 	{
-		gridID = _coordinateX.ToString() + _coordinateY.ToString();
+		gridID = _id;
 		coordinateX = _coordinateX;
 		coordinateY = _coordinateY;
 		type = _type;
-		direction = _direction;
+
+		wayPointDirection = _direction;
 
 		gridGameObject = (GameObject) Resources.Load(_prefabLocation);
 		//Gives the name to the prefab in inspector
@@ -113,12 +145,28 @@ public class GridObject
 	}
 
 	/// <summary>
-	/// Gets the tk2ui item.
+	/// Initializes a new instance of the <see cref="GridObject"/> class with SPAWNPOINT.
 	/// </summary>
-	/// <returns>The tk2ui item.</returns>
-	public tk2dUIItem getTk2uiItem()
+	/// <param name="_coordinateX">_coordinate x.</param>
+	/// <param name="_coordinateY">_coordinate y.</param>
+	/// <param name="_type">_type.</param>
+	/// <param name="_direction">_direction.</param>
+	/// <param name="_gridGameObject">_grid game object.</param>
+	public GridObject(string _id, int _coordinateX, int _coordinateY, GridType _type, SpawnpointDirection _direction, string _prefabLocation)
 	{
-		return this.GridGameObject.GetComponent<tk2dUIItem>();
+		gridID = _id;
+		coordinateX = _coordinateX;
+		coordinateY = _coordinateY;
+		type = _type;
+
+		spawnPointDirection = _direction;
+		
+		gridGameObject = (GameObject) Resources.Load(_prefabLocation);
+		//Gives the name to the prefab in inspector
+		gridGameObject.name = _type.ToString();
+		
+		setSpawnpointImage(_direction);
+		
 	}
 
 	/// <summary>
@@ -169,8 +217,52 @@ public class GridObject
 			Debug.LogError("GridObject: Unknown direction:");
 			break;
 		}
-		
+	}
 
+	/// <summary>
+	/// Sets the spawnpoint image.
+	/// </summary>
+	/// <param name="_direction">_direction.</param>
+	private void setSpawnpointImage(SpawnpointDirection _direction)
+	{
+		switch (_direction)
+		{
+		case SpawnpointDirection.ToLeft:
+			this.GridGameObject.GetComponent<tk2dSprite>().SetSprite(10);
+			break;
+		case SpawnpointDirection.ToDown:
+			this.GridGameObject.GetComponent<tk2dSprite>().SetSprite(10);
+			break;
+		case SpawnpointDirection.ToTop:
+			this.GridGameObject.GetComponent<tk2dSprite>().SetSprite(10);
+			break;
+		case SpawnpointDirection.ToRight:
+			this.GridGameObject.GetComponent<tk2dSprite>().SetSprite(10);
+			break;
+		default:
+			Debug.LogError("GridObject: Unknown direction:");
+			break;
+		}
+		
+		
+	}
+
+	/// <summary>
+	/// Gets the tk2ui item.
+	/// </summary>
+	/// <returns>The tk2ui item.</returns>
+	public tk2dUIItem getTk2uiItem()
+	{
+		return this.GridGameObject.GetComponent<tk2dUIItem>();
+	}
+
+	/// <summary>
+	/// Gets the transform.
+	/// </summary>
+	/// <returns>The transform.</returns>
+	public Transform getTransform()
+	{
+		return this.GridGameObject.transform;
 	}
 	
 }
