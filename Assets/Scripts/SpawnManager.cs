@@ -48,7 +48,7 @@ public class SpawnManager : MonoBehaviour {
 				creepWaves ["Wave"+_wave.ToString()].CreepsInWave[i].CreepGameObject = 
 					(GameObject)Instantiate(creepWaves["Wave"+_wave.ToString()].CreepsInWave[i].CreepGameObject,ways[j][0].position, Quaternion.identity);
 
-
+				creepWaves ["Wave"+_wave.ToString()].CreepsInWave[i].CreepGameObject.name = "W" + _wave.ToString() + ".S" + j.ToString() + ".M" + i.ToString();
 			}
 		}
 
